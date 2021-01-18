@@ -1,0 +1,23 @@
+body{
+    margin: 0px;
+    padding: 0px;
+}
+
+h1, h2{
+    color:#98c363;
+}
+
+.wrapper{
+    background-color: #282c34;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+}
+
+input{
+    height: 20px;
+    width: 250px;
+}
+
