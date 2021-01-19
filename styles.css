@@ -1,23 +1,105 @@
 body{
     margin: 0px;
     padding: 0px;
+    background-color: #282c34;
 }
 
-h1, h2{
-    color:#98c363;
+h1{
+    color: #98c363;
+}
+
+h2{
+    color:#abb2bf;
 }
 
 .wrapper{
-    background-color: #282c34;
     display: flex;
     justify-content: flex-start;
     align-items: center;
     flex-direction: column;
-    height: 100vh;
+    
+    overflow: hidden;
+
+    background-color: #282c34;
 }
 
-input{
+.input-wrapper{
+    margin-bottom: 10px;
+}
+
+#input-text{
     height: 20px;
     width: 250px;
+    margin-right: 5px;
+        
+    font-weight: 700;
+    font-size: 20px;
+
+    background-color: #282c34;
+    color:#98c363;
+    border-color: #282c34;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid #98c363;
 }
 
+#input-submit{
+    height: 26px;
+    background-color:#98c363;
+    border:none;
+    border-radius: 5px;
+}
+
+.nav{
+    margin-bottom: 10px;
+}
+
+select{
+    background-color: #282c34;
+    color:#98c363;
+    border-color: #282c34;
+    outline: none;
+    
+    font-size: 20px;
+    padding: 5px; 
+}
+
+option{
+    color:#98c363;
+    
+}
+
+#search{
+    width: 160px;
+
+    font-size: 20px;
+    font-weight: 700;
+
+    background-color: #282c34;
+    color:#98c363;
+    border-color: #282c34;
+
+    outline: none;
+    border: none;
+    border-bottom: 1px solid #98c363; 
+}
+
+.cases-container{
+    width: 320px;
+    margin-bottom: 10px;
+
+    border: 2px solid #98c363;
+    border-radius: 10px;
+
+}
+
+.cases-text{
+    color: #abb2bf;
+
+    font-weight: 700;
+    font-size: 20px;
+    
+    padding: 0px 10px;
+    margin: 10px 0px;
+    overflow-x:hidden;
+}
