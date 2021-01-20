@@ -1,60 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Todo-list</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    
+    <head>
+        <meta charset="UTF-8" />
+        <title>Todo-list</title>
+        <link rel="stylesheet" href="styles.css" />
+    </head>
+    <body>
+        <div class="wrapper">
+            <h1>Todo-list</h1>
 
-    <div class="wrapper">
-        <h1>Todo-list</h1>
+            <form class="input-wrapper">
+                <input type="text" placeholder="create a new task..." id="input-text" />
+                <input type="submit" id="input-submit" value="create" />
+            </form>
 
-        <form class="input-wrapper">
-            <input type="text"  placeholder="create a new task..." id="input-text">
-            <input type="submit" id="input-submit" value="create">
-        </form>
+            <h2>Tasks:</h2>
 
-        <h2>Tasks:</h2>
+            <div class="nav">
+                <select id="sort-select">
+                    <option class="option">Without sort</option>
+                    <option class="option">Sort A-Z</option>
+                    <option class="option">Sort Z-A</option>
+                    <option class="option">Sort by date</option>
+                </select>
 
-        <div class="nav">    
-            <select id="sort-select">
-                <option>Without sort</option>
-                <option>Sort A-Z</option>
-                <option>Sort Z-A</option>
-                <option>Sort by date</option>
-            </select>
+                <input type="search" id="search" placeholder="search a task..." />
+            </div>
 
-            <input type="search" id="search" placeholder="search a task...">
+            <div class="cases-container"><p class="cases-text">Выгулять собаку</p></div>
+            <div class="cases-container"><p class="cases-text">Купить продукты</p></div>
+            <div class="cases-container"><p class="cases-text">Приготовить еду</p></div>
+            <div class="cases-container"><p class="cases-text">Выгулять собаку</p></div>
+            <div class="cases-container"><p class="cases-text">Купить продукты</p></div>
+            <div class="cases-container"><p class="cases-text">Приготовить еду</p></div>
+            <div class="cases-container"><p class="cases-text">Выгулять собаку</p></div>
+            <div class="cases-container"><p class="cases-text">Купить продукты</p></div>
+            <div class="cases-container"><p class="cases-text">Приготовить еду</p></div>
+            <div class="cases-container"><p class="cases-text">Выгулять собаку</p></div>
+            <div class="cases-container"><p class="cases-text">Купить продукты</p></div>
+            <div class="cases-container"><p class="cases-text">Приготовить еду</p></div>
+            <div class="cases-container"><p class="cases-text">Выгулять собаку</p></div>
+            <div class="cases-container"><p class="cases-text">Купить продукты</p></div>
+            <div class="cases-container"><p class="cases-text">Приготовить еду</p></div>
+            <div class="cases-container"><p class="cases-text">Выгулять собаку</p></div>
+            <div class="cases-container"><p class="cases-text">Купить продукты</p></div>
+            <div class="cases-container"><p class="cases-text">Приготовить еду</p></div>
+            <div class="cases-container"><p class="cases-text">Выгулять собаку</p></div>
+            <div class="cases-container"><p class="cases-text">Купить продукты</p></div>
+            <div class="cases-container"><p class="cases-text">Приготовить еду</p></div>
+            <div class="cases-container"><p class="cases-text">Выгулять собаку</p></div>
+            <div class="cases-container"><p class="cases-text">Купить продукты</p></div>
+            <div class="cases-container"><p class="cases-text">Приготовить еду</p></div>
         </div>
 
-        <div class="cases-container"><p class="cases-text">Выгулять собаку</p></div>
-        <div class="cases-container"><p class="cases-text">Купить продукты</p></div>
-        <div class="cases-container"><p class="cases-text">Приготовить еду </p></div>
-        <div class="cases-container"><p class="cases-text">Выгулять собаку</p></div>
-        <div class="cases-container"><p class="cases-text">Купить продукты</p></div>
-        <div class="cases-container"><p class="cases-text">Приготовить еду </p></div>
-        <div class="cases-container"><p class="cases-text">Выгулять собаку</p></div>
-        <div class="cases-container"><p class="cases-text">Купить продукты </p></div>
-        <div class="cases-container"><p class="cases-text">Приготовить еду </p></div>
-        <div class="cases-container"><p class="cases-text">Выгулять собаку</p></div>
-        <div class="cases-container"><p class="cases-text">Купить продукты</p></div>
-        <div class="cases-container"><p class="cases-text">Приготовить еду </p></div>  
-        <div class="cases-container"><p class="cases-text">Выгулять собаку</p></div>
-        <div class="cases-container"><p class="cases-text">Купить продукты</p></div>
-        <div class="cases-container"><p class="cases-text">Приготовить еду </p></div>
-        <div class="cases-container"><p class="cases-text">Выгулять собаку</p></div>
-        <div class="cases-container"><p class="cases-text">Купить продукты</p></div>
-        <div class="cases-container"><p class="cases-text">Приготовить еду </p></div>
-        <div class="cases-container"><p class="cases-text">Выгулять собаку</p></div>
-        <div class="cases-container"><p class="cases-text">Купить продукты </p></div>
-        <div class="cases-container"><p class="cases-text">Приготовить еду </p></div>
-        <div class="cases-container"><p class="cases-text">Выгулять собаку</p></div>
-        <div class="cases-container"><p class="cases-text">Купить продукты</p></div>
-        <div class="cases-container"><p class="cases-text">Приготовить еду </p></div> 
-    </div>
-
-    <script src="script.js"></script>
-</body>
+        <script src="script.js"></script>
+    </body>
 </html>
