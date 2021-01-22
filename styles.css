@@ -76,18 +76,30 @@ select {
 }
 
 .cases-container {
+    display:flex;
+    justify-content: space-between;
     min-width: 500px;
     margin-bottom: 10px;
     border: 2px solid #98c363;
     border-radius: 10px;
+
+    position: relative;
 }
 
 .cases-text {
     color: #abb2bf;
     font-weight: 700;
     font-size: 20px;
-    padding: 0px 10px;
+    padding: 10px 25px;
     margin: 10px 0px;
     word-break:break-all;
+}
+
+.cases-cross{
+    position: absolute;
+    left: 96%;
+    top: 5%;
+    color: red;
+    cursor: pointer;
 }
 
