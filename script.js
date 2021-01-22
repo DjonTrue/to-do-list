@@ -25,7 +25,6 @@ function displayElements() {
     const createDate = createCasesContainer.appendChild(document.createElement('p'));
     const createCross = createCasesContainer.appendChild(document.createElement('span'));
     
-    
     for (let i = 0; i <= toDoList.length; i++) {
         
         wrapper.append(createCasesContainer); // create <div class="cases-container"></div>
@@ -39,10 +38,7 @@ function displayElements() {
         createCross.id = 'cross_' + i;
         createCases.innerHTML = inputText.value;
         createDate.innerHTML = inputDate.value;
-        createCross.innerHTML = 'X';
-    
-        
-        
+        createCross.innerHTML = 'X';  
     }
 
     createCross.addEventListener('click', (e) => {
