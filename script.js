@@ -43,7 +43,8 @@ function displayElements() {
 
     createCross.addEventListener('click', (e) => {
         e.target.parentNode.remove();
+        const indexInArray = e.target.parentNode.id.slice(10) - 1; // index of element in array
+        toDoList.splice([indexInArray], 1);
     });
 }
 
-// вычеркивание будет реализовано при нажатии на конкретную тудушку
