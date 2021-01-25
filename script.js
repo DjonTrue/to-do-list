@@ -2,10 +2,11 @@ const inputText = document.getElementById('input-text');
 const inputDate = document.getElementById('input-date')
 const createElement = document.getElementById('input-submit');
 const wrapper = document.querySelector('.wrapper');
+const casesWrapper = document.getElementById('cases=wrapper');
 const toDoList = [];
 
-createElement.addEventListener('click', (e) => {
-    e.preventDefault();
+createElement.addEventListener('click', (event) => {
+    event.preventDefault();
     if (inputText.value === '') return;
     
     const newToDo = {
@@ -27,24 +28,23 @@ function displayElements() {
     
     for (let i = 0; i <= toDoList.length; i++) {
         
-        wrapper.append(createCasesContainer); // create <div class="cases-container"></div>
+        casesWrapper.append(createCasesContainer); 
         createCasesContainer.className = 'cases-container';
-        createCasesContainer.id = 'container_' + i;
-        createCases.className = 'cases-text'; // create <p class="'cases-text'"></p>
+        createCasesContainer.id = i;
+        createCases.className = 'cases-text'; 
         createDate.className = 'cases-text';
         createCross.className = 'cases-cross';
-        createDate.id = 'date_' + i;
-        createCases.id = 'text_' + i;
-        createCross.id = 'cross_' + i;
         createCases.innerHTML = inputText.value;
         createDate.innerHTML = inputDate.value;
         createCross.innerHTML = 'X';  
     }
 
-    createCross.addEventListener('click', (e) => {
-        e.target.parentNode.remove();
-        const indexInArray = e.target.parentNode.id.slice(10) - 1; // index of element in array
+    casesWrapper.addEventListener('click', (event) => {
+        if (event.target.className === 'cases-cross') {
+            event.target.parentNode.remove(); // не получится перерисовать массив так как сработает столько кликов, сколько тудушек на странице
+        } 
+
+        const indexInArray = event.target.parentNode.id - 1; // index of element in array
         toDoList.splice([indexInArray], 1);
     });
 }
-
