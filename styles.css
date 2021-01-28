@@ -82,8 +82,12 @@ select {
     margin-bottom: 10px;
     border: 2px solid #98c363;
     border-radius: 10px;
-
+    
     position: relative;
+}
+
+.cases-container-checked{
+    opacity: 0.2;
 }
 
 .cases-text {

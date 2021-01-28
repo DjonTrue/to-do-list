@@ -23,6 +23,10 @@ const addTodo = (event) => {
     inputDate.value = "";
 };
 
+const checkedTodo = (event) => {
+    event.target.classList.toggle("cases-container-checked");
+};
+
 const removeTodo = (event) => {
     if (event.target.className === "cases-cross") {
         const newArray = toDoList.filter(
@@ -36,7 +40,6 @@ const removeTodo = (event) => {
 createElement.addEventListener("click", addTodo);
 
 function displayElements(toDoList) {
-    console.log(toDoList);
 
     const createCasesContainer = document.createElement("div");
     const createCases = createCasesContainer.appendChild(document.createElement("p"));
@@ -44,7 +47,6 @@ function displayElements(toDoList) {
     const createCross = createCasesContainer.appendChild(document.createElement("span"));
 
     toDoList.forEach((toDoItem) => {
-        console.log(toDoItem);
         createCasesContainer.className = "cases-container";
         createCasesContainer.id = toDoItem.id;
         createCases.className = "cases-text";
@@ -53,9 +55,9 @@ function displayElements(toDoList) {
         createCases.innerHTML = toDoItem.text;
         createDate.innerHTML = toDoItem.createDate;
         createCross.innerHTML = "X";
-
         casesWrapper.append(createCasesContainer);
     });
 
     casesWrapper.addEventListener("click", removeTodo);
+    casesWrapper.addEventListener('click', checkedTodo);
 }
