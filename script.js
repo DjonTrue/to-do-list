@@ -26,8 +26,9 @@ const addTodo = (event) => {
 const checkedTodo = (event) => {
     if (event.target.className === 'cases-text') {
         event.target.parentNode.classList.toggle('cases-container-checked');
-    } else  event.target.classList.toggle("cases-container-checked");
-
+    } if (event.target.className === 'cases-wrapper') {
+        return;
+    } else event.target.classList.toggle("cases-container-checked");
 };
 
 const removeTodo = (event) => {
