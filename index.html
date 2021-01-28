@@ -10,9 +10,14 @@
             <h1>Todo-list</h1>
 
             <form class="input-wrapper">
-                <input type="text" placeholder="create a new task..." id="input-text" />
-                <input type="date" id="input-date" />
-                <input type="submit" id="input-submit" value="create" />
+                <input
+                    type="text"
+                    placeholder="create a new task..."
+                    id="inputText"
+                    class="todo-text-input"
+                />
+                <input type="date" id="inputDate" />
+                <input type="submit" id="inputSubmit" class="todo-submit" />
             </form>
 
             <h2>Tasks:</h2>
@@ -28,7 +33,7 @@
                 <input type="search" id="search" placeholder="search a task..." />
             </div>
 
-            <div class="cases-wrapper" id="cases=wrapper"></div>
+            <div class="cases-wrapper" id="casesWrapper"></div>
         </div>
 
         <script src="script.js"></script>

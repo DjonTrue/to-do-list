@@ -25,7 +25,7 @@ h2 {
     margin-bottom: 10px;
 }
 
-#input-text {
+.todo-text-input {
     height: 20px;
     width: 250px;
     margin-right: 5px;
@@ -39,7 +39,7 @@ h2 {
     border-bottom: 1px solid #98c363;
 }
 
-#input-submit {
+.todo-submit {
     height: 26px;
     background-color: #98c363;
     border: none;
@@ -76,7 +76,7 @@ select {
 }
 
 .cases-container {
-    display:flex;
+    display: flex;
     justify-content: space-between;
     min-width: 500px;
     margin-bottom: 10px;
@@ -92,14 +92,13 @@ select {
     font-size: 20px;
     padding: 10px 25px;
     margin: 10px 0px;
-    word-break:break-all;
+    word-break: break-all;
 }
 
-.cases-cross{
+.cases-cross {
     position: absolute;
     left: 96%;
     top: 5%;
     color: red;
     cursor: pointer;
 }
-

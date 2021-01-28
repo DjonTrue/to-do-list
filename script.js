@@ -1,50 +1,61 @@
-const inputText = document.getElementById('input-text');
-const inputDate = document.getElementById('input-date')
-const createElement = document.getElementById('input-submit');
-const wrapper = document.querySelector('.wrapper');
-const casesWrapper = document.getElementById('cases=wrapper');
-const toDoList = [];
+const inputText = document.getElementById("inputText");
+const inputDate = document.getElementById("inputDate");
+const createElement = document.getElementById("inputSubmit");
+const casesWrapper = document.getElementById("casesWrapper");
+let toDoList = [];
 
-createElement.addEventListener('click', (event) => {
+const addTodo = (event) => {
     event.preventDefault();
-    if (inputText.value === '') return;
-    
+
+    if (inputText.value === "") return;
+
     const newToDo = {
-        name: inputText.value,
+        id: toDoList.length,
+        text: inputText.value,
         checked: false,
-        createDate: inputDate.value
+        createDate: inputDate.value,
     };
+
     toDoList.push(newToDo);
-    displayElements();
-    inputText.value = '';
-    inputDate.value = '';
-});
+    displayElements(toDoList);
 
-function displayElements() {
-    const createCasesContainer = document.createElement('div');
-    const createCases = createCasesContainer.appendChild(document.createElement('p'));
-    const createDate = createCasesContainer.appendChild(document.createElement('p'));
-    const createCross = createCasesContainer.appendChild(document.createElement('span'));
-    
-    for (let i = 0; i <= toDoList.length; i++) {
-        
-        casesWrapper.append(createCasesContainer); 
-        createCasesContainer.className = 'cases-container';
-        createCasesContainer.id = i;
-        createCases.className = 'cases-text'; 
-        createDate.className = 'cases-text';
-        createCross.className = 'cases-cross';
-        createCases.innerHTML = inputText.value;
-        createDate.innerHTML = inputDate.value;
-        createCross.innerHTML = 'X';  
+    inputText.value = "";
+    inputDate.value = "";
+};
+
+const removeTodo = (event) => {
+    if (event.target.className === "cases-cross") {
+        const newArray = toDoList.filter(
+            (todoItem) => todoItem.id !== Number(event.target.parentNode.id),
+        );
+        event.target.parentNode.remove();
+        toDoList = newArray;    
     }
+};
 
-    casesWrapper.addEventListener('click', (event) => {
-        if (event.target.className === 'cases-cross') {
-            event.target.parentNode.remove(); // не получится перерисовать массив так как сработает столько кликов, сколько тудушек на странице
-        } 
+createElement.addEventListener("click", addTodo);
 
-        const indexInArray = event.target.parentNode.id - 1; // index of element in array
-        toDoList.splice([indexInArray], 1);
+function displayElements(toDoList) {
+    console.log(toDoList);
+
+    const createCasesContainer = document.createElement("div");
+    const createCases = createCasesContainer.appendChild(document.createElement("p"));
+    const createDate = createCasesContainer.appendChild(document.createElement("p"));
+    const createCross = createCasesContainer.appendChild(document.createElement("span"));
+
+    toDoList.forEach((toDoItem) => {
+        console.log(toDoItem);
+        createCasesContainer.className = "cases-container";
+        createCasesContainer.id = toDoItem.id;
+        createCases.className = "cases-text";
+        createDate.className = "cases-text";
+        createCross.className = "cases-cross";
+        createCases.innerHTML = toDoItem.text;
+        createDate.innerHTML = toDoItem.createDate;
+        createCross.innerHTML = "X";
+
+        casesWrapper.append(createCasesContainer);
     });
+
+    casesWrapper.addEventListener("click", removeTodo);
 }
