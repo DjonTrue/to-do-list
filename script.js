@@ -24,19 +24,13 @@ const addTodo = (event) => {
 };
 
 const checkedTodo = (event) => {
-    if (event.target.className === "cases-text") {
-        event.target.parentNode.classList.toggle("cases-container-checked");
-        event.target.parentNode.classList[1] ////"cases-container-checked" добавляется в массив classList под индексом 1, проверяем есть ли он там
-            ? (toDoList[event.target.parentNode.id].checked = true)
-            : (toDoList[event.target.parentNode.id].checked = false);
-    } else if (event.target.className === "cases-wrapper") {
-        return;
-    } else {
-        event.target.classList.toggle("cases-container-checked");
-        event.target.classList[1]
-            ? (toDoList[event.target.id].checked = true)
-            : (toDoList[event.target.id].checked = false); 
-    }
+    const element =
+        event.target.className === "cases-text" ? event.target.parentNode : event.target;
+
+    element.classList.toggle("cases-container-checked");
+    !!element.classList[1] ////"cases-container-checked" добавляется в массив classList под индексом 1, проверяем есть ли он там
+        ? (toDoList[element.id].checked = true)
+        : (toDoList[element.id].checked = false);
 };
 
 const removeTodo = (event) => {
@@ -70,5 +64,5 @@ function displayElements(toDoList) {
     });
 
     casesWrapper.addEventListener("click", removeTodo);
-    casesWrapper.addEventListener("click", checkedTodo);
+    createCasesContainer.addEventListener("click", checkedTodo);
 }
