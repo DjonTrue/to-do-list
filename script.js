@@ -24,11 +24,19 @@ const addTodo = (event) => {
 };
 
 const checkedTodo = (event) => {
-    if (event.target.className === 'cases-text') {
-        event.target.parentNode.classList.toggle('cases-container-checked');
-    } if (event.target.className === 'cases-wrapper') {
+    if (event.target.className === "cases-text") {
+        event.target.parentNode.classList.toggle("cases-container-checked");
+        event.target.parentNode.classList[1] ////"cases-container-checked" добавляется в массив classList под индексом 1, проверяем есть ли он там
+            ? (toDoList[event.target.parentNode.id].checked = true)
+            : (toDoList[event.target.parentNode.id].checked = false);
+    } else if (event.target.className === "cases-wrapper") {
         return;
-    } else event.target.classList.toggle("cases-container-checked");
+    } else {
+        event.target.classList.toggle("cases-container-checked");
+        event.target.classList[1]
+            ? (toDoList[event.target.id].checked = true)
+            : (toDoList[event.target.id].checked = false); 
+    }
 };
 
 const removeTodo = (event) => {
@@ -37,14 +45,13 @@ const removeTodo = (event) => {
             (todoItem) => todoItem.id !== Number(event.target.parentNode.id),
         );
         event.target.parentNode.remove();
-        toDoList = newArray;    
+        toDoList = newArray;
     }
 };
 
 createElement.addEventListener("click", addTodo);
 
 function displayElements(toDoList) {
-
     const createCasesContainer = document.createElement("div");
     const createCases = createCasesContainer.appendChild(document.createElement("p"));
     const createDate = createCasesContainer.appendChild(document.createElement("p"));
@@ -63,5 +70,5 @@ function displayElements(toDoList) {
     });
 
     casesWrapper.addEventListener("click", removeTodo);
-    casesWrapper.addEventListener('click', checkedTodo);
+    casesWrapper.addEventListener("click", checkedTodo);
 }
