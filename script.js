@@ -24,13 +24,15 @@ const addTodo = (event) => {
 };
 
 const checkedTodo = (event) => {
-    const element =
-        event.target.className === "cases-text" ? event.target.parentNode : event.target;
+    if (event.target.className !== "cases-cross") {
+        const element =
+            event.target.className === "cases-text" ? event.target.parentNode : event.target;
 
-    element.classList.toggle("cases-container-checked");
-    !!element.classList[1] ////"cases-container-checked" добавляется в массив classList под индексом 1, проверяем есть ли он там
-        ? (toDoList[element.id].checked = true)
-        : (toDoList[element.id].checked = false);
+        element.classList.toggle("cases-container-checked");
+        !!element.classList.value.includes("cases-container-checked")
+            ? (toDoList[element.id].checked = true)
+            : (toDoList[element.id].checked = false);
+    }
 };
 
 const removeTodo = (event) => {
@@ -63,6 +65,6 @@ function displayElements(toDoList) {
         casesWrapper.append(createCasesContainer);
     });
 
-    casesWrapper.addEventListener("click", removeTodo);
+    createCasesContainer.addEventListener("click", removeTodo);
     createCasesContainer.addEventListener("click", checkedTodo);
 }
