@@ -2,6 +2,7 @@ const inputText = document.getElementById("inputText");
 const inputDate = document.getElementById("inputDate");
 const createElement = document.getElementById("inputSubmit");
 const casesWrapper = document.getElementById("casesWrapper");
+const sortButton = document.getElementById("sort-select");
 let toDoList = [];
 
 const addTodo = (event) => {
@@ -23,6 +24,8 @@ const addTodo = (event) => {
     inputDate.value = "";
 };
 
+createElement.addEventListener("click", addTodo);
+
 const checkedTodo = (event) => {
     if (event.target.className !== "cases-cross") {
         const element =
@@ -40,20 +43,57 @@ const removeTodo = (event) => {
         const newArray = toDoList.filter(
             (todoItem) => todoItem.id !== Number(event.target.parentNode.id),
         );
-        event.target.parentNode.remove();
         toDoList = newArray;
+        displayElements(newArray);
     }
 };
 
-createElement.addEventListener("click", addTodo);
+const clearField = () => {
+    while (casesWrapper.firstChild) {
+        casesWrapper.removeChild(casesWrapper.firstChild);
+    }
+};
 
-function displayElements(toDoList) {
-    const createCasesContainer = document.createElement("div");
-    const createCases = createCasesContainer.appendChild(document.createElement("p"));
-    const createDate = createCasesContainer.appendChild(document.createElement("p"));
-    const createCross = createCasesContainer.appendChild(document.createElement("span"));
+const sortArray = (array, sortFieldName) => {
+    array.sort((a, b) => {
+        if (a[sortFieldName] < b[sortFieldName]) return -1;
+        if (a[sortFieldName] > b[sortFieldName]) return 1;
+        return 0;
+    });
+};
 
-    toDoList.forEach((toDoItem) => {
+const sort = () => {
+    switch (sortButton.value) {
+        case "Sort A-Z":
+            sortArray(toDoList, "text");
+            displayElements(toDoList);
+            break;
+        case "Sort Z-A":
+            sortArray(toDoList, "text");
+            displayElements(toDoList.reverse());
+            break;
+        case "Sort by date":
+            sortArray(toDoList, "createDate");
+            displayElements(toDoList);
+            break;
+        case "Reverse date":
+            sortArray(toDoList, "createDate");
+            displayElements(toDoList.reverse());
+            break;
+        default:
+            displayElements(toDoList);
+    }
+};
+
+function displayElements(array) {
+    clearField();
+
+    array.forEach((toDoItem) => {
+        const createCasesContainer = document.createElement("div");
+        const createCases = createCasesContainer.appendChild(document.createElement("p"));
+        const createDate = createCasesContainer.appendChild(document.createElement("p"));
+        const createCross = createCasesContainer.appendChild(document.createElement("span"));
+
         createCasesContainer.className = "cases-container";
         createCasesContainer.id = toDoItem.id;
         createCases.className = "cases-text";
@@ -62,9 +102,10 @@ function displayElements(toDoList) {
         createCases.innerHTML = toDoItem.text;
         createDate.innerHTML = toDoItem.createDate;
         createCross.innerHTML = "X";
-        casesWrapper.append(createCasesContainer);
-    });
+        casesWrapper.appendChild(createCasesContainer);
 
-    createCasesContainer.addEventListener("click", removeTodo);
-    createCasesContainer.addEventListener("click", checkedTodo);
+        createCasesContainer.addEventListener("click", removeTodo);
+        createCasesContainer.addEventListener("click", checkedTodo);
+        sortButton.addEventListener("click", sort);
+    });
 }
