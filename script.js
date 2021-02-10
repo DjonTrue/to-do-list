@@ -54,7 +54,7 @@ const clearField = () => {
     }
 };
 
-const sortArray = (array, property) => {
+const sortFieldName = (array, property) => {
     array.sort((a, b) => {
         if (a[property] < b[property]) return -1;
         if (a[property] > b[property]) return 1;
@@ -65,19 +65,19 @@ const sortArray = (array, property) => {
 const sort = () => {
     switch (sortButton.value) {
         case "Sort A-Z":
-            sortArray(toDoList, "text");
+            sortFieldName(toDoList, "text");
             displayElements(toDoList);
             break;
         case "Sort Z-A":
-            sortArray(toDoList, "text");
+            sortFieldName(toDoList, "text");
             displayElements(toDoList.reverse());
             break;
         case "Sort by date":
-            sortArray(toDoList, "createDate");
+            sortFieldName(toDoList, "createDate");
             displayElements(toDoList);
             break;
         case "Reverse date":
-            sortArray(toDoList, "createDate");
+            sortFieldName(toDoList, "createDate");
             displayElements(toDoList.reverse());
             break;
         default:
