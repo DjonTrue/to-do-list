@@ -54,42 +54,30 @@ const clearField = () => {
     }
 };
 
+const sortArray = (array, property) => {
+    array.sort((a, b) => {
+        if (a[property] < b[property]) return -1;
+        if (a[property] > b[property]) return 1;
+        return 0;
+    });
+};
+
 const sort = () => {
-    const sortByAlphabeticalOrder = (array) => {
-        array.sort((a, b) => {
-            if (a.text < b.text) return -1;
-            if (a.text > b.text) return 1;
-            return 0;
-        });
-    };
-
-    const sortByDate = (array) => {
-        array.sort((a, b) => {
-            if (a.createDate < b.createDate) return -1;
-            if (a.createDate > b.createDate) return 1;
-            return 0;
-        });
-    };
-
-    switch (sortButton.selectedIndex) {
-        case 1:
-            //sort A-Z
-            sortByAlphabeticalOrder(toDoList);
+    switch (sortButton.value) {
+        case "Sort A-Z":
+            sortArray(toDoList, "text");
             displayElements(toDoList);
             break;
-        case 2:
-            //sort Z-A
-            sortByAlphabeticalOrder(toDoList);
+        case "Sort Z-A":
+            sortArray(toDoList, "text");
             displayElements(toDoList.reverse());
             break;
-        case 3:
-            //sort by date in ascending order
-            sortByDate(toDoList);
+        case "Sort by date":
+            sortArray(toDoList, "createDate");
             displayElements(toDoList);
             break;
-        case 4:
-            //sort by date in ascending order
-            sortByDate(toDoList.reverse());
+        case "Reverse date":
+            sortArray(toDoList, "createDate");
             displayElements(toDoList.reverse());
             break;
         default:
