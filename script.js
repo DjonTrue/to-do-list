@@ -3,6 +3,10 @@ const inputDate = document.getElementById("inputDate");
 const createElement = document.getElementById("inputSubmit");
 const casesWrapper = document.getElementById("casesWrapper");
 const sortButton = document.getElementById("sort-select");
+const searchButton = document.getElementById("search");
+const searchSubmit = document.getElementById("searchSubmit");
+const searchDate = document.getElementById("searchDate");
+const searchReset = document.getElementById("searchReset");
 let toDoList = [];
 
 const addTodo = (event) => {
@@ -85,6 +89,32 @@ const sort = () => {
     }
 };
 
+const searchTodo = () => {
+    if (searchButton.value === "") return;
+    if (searchDate.value === "") return;
+
+    const searchResult = [];
+
+    for (let i in toDoList) {
+        if (
+            searchButton.value === toDoList[i].text &&
+            searchDate.value === toDoList[i].createDate
+        ) {
+            searchResult.push(toDoList[i]);
+        }
+    }
+
+    if (searchResult.length === 0) {
+        casesWrapper.innerHTML = "Nothing was found! Please click reset.";
+    } else {
+        displayElements(searchResult);
+    }
+
+    searchReset.addEventListener("click", () => {
+        displayElements(toDoList);
+    });
+};
+
 function displayElements(array) {
     clearField();
 
@@ -107,5 +137,6 @@ function displayElements(array) {
         createCasesContainer.addEventListener("click", removeTodo);
         createCasesContainer.addEventListener("click", checkedTodo);
         sortButton.addEventListener("click", sort);
+        searchSubmit.addEventListener("click", searchTodo);
     });
 }
