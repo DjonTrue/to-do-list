@@ -90,15 +90,14 @@ const sort = () => {
 };
 
 const searchTodo = () => {
-
-    if (searchText.value !== "" && searchDate.value !== "") {
+    if (!!searchText.value && !!searchDate.value) {
         searchResult = toDoList.filter(
-            (item) => item.text.includes(searchText.value) && item.createDate == searchDate.value
+            (item) => item.text.includes(searchText.value) && item.createDate === searchDate.value,
         );
-    } else if (searchText.value !== "" && searchDate.value === "") {
+    } else if (!!searchText.value && !searchDate.value) {
         searchResult = toDoList.filter((item) => item.text.includes(searchText.value));
-    } else if (searchText.value === "" && searchDate.value !== "") {
-        searchResult = toDoList.filter((item) => item.createDate == searchDate.value);
+    } else if (!searchText.value && !!searchDate.value) {
+        searchResult = toDoList.filter((item) => item.createDate === searchDate.value);
     }
 
     if (searchResult.length === 0) {
