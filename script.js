@@ -3,6 +3,10 @@ const inputDate = document.getElementById("inputDate");
 const createElement = document.getElementById("inputSubmit");
 const casesWrapper = document.getElementById("casesWrapper");
 const sortButton = document.getElementById("sort-select");
+const searchText = document.getElementById("search");
+const searchSubmit = document.getElementById("searchSubmit");
+const searchDate = document.getElementById("searchDate");
+const searchReset = document.getElementById("searchReset");
 let toDoList = [];
 
 const addTodo = (event) => {
@@ -85,6 +89,32 @@ const sort = () => {
     }
 };
 
+const searchTodo = () => {
+    if (!!searchText.value && !!searchDate.value) {
+        searchResult = toDoList.filter(
+            (item) => item.text.includes(searchText.value) && item.createDate === searchDate.value,
+        );
+    } else if (!!searchText.value && !searchDate.value) {
+        searchResult = toDoList.filter((item) => item.text.includes(searchText.value));
+    } else if (!searchText.value && !!searchDate.value) {
+        searchResult = toDoList.filter((item) => item.createDate === searchDate.value);
+    }
+
+    if (searchResult.length === 0) {
+        casesWrapper.innerHTML = "Nothing was found! Please click reset.";
+    } else {
+        displayElements(searchResult);
+    }
+
+    searchReset.addEventListener("click", () => {
+        displayElements(toDoList);
+        sortButton.options[0].selected = true;
+    });
+
+    searchText.value = "";
+    searchDate.value = "";
+};
+
 function displayElements(array) {
     clearField();
 
@@ -107,5 +137,6 @@ function displayElements(array) {
         createCasesContainer.addEventListener("click", removeTodo);
         createCasesContainer.addEventListener("click", checkedTodo);
         sortButton.addEventListener("click", sort);
+        searchSubmit.addEventListener("click", searchTodo);
     });
 }

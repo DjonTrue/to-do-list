@@ -44,10 +44,12 @@ h2 {
     background-color: #98c363;
     border: none;
     border-radius: 5px;
+    margin: 0 5px;
 }
 
 .nav {
     margin-bottom: 10px;
+    display: flex;
 }
 
 select {
@@ -73,6 +75,7 @@ select {
     outline: none;
     border: none;
     border-bottom: 1px solid #98c363;
+    margin: 0 10px;
 }
 
 .cases-container {
