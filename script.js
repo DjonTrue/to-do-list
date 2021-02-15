@@ -147,8 +147,6 @@ function displayElements(array) {
 }
 
 window.onload = () => {
-    toDoList = JSON.parse(localStorage.getItem("toDoElements"));
-    if (!!toDoList) {
-        displayElements(toDoList);
-    }
+    toDoList = JSON.parse(localStorage.getItem("toDoElements")) || [];
+    displayElements(toDoList);
 };
