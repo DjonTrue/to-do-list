@@ -40,6 +40,7 @@ const checkedTodo = (event) => {
             ? (toDoList[element.id].checked = true)
             : (toDoList[element.id].checked = false);
     }
+    console.log(toDoList);
 };
 
 const removeTodo = (event) => {
@@ -141,13 +142,12 @@ function displayElements(array) {
     });
 
     if (array === toDoList) {
-        localStorage.removeItem("toDoElements");
         localStorage.setItem("toDoElements", JSON.stringify(array));
     }
 }
 
 window.onload = () => {
-    toDoList = JSON.parse(localStorage.getItem("toDoElements")) || [];
+    toDoList = JSON.parse(localStorage.getItem("toDoElements"));
     if (!!toDoList) {
         displayElements(toDoList);
     }
