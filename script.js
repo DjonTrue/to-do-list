@@ -48,7 +48,7 @@ const removeTodo = (event) => {
             (todoItem) => todoItem.id !== Number(event.target.parentNode.id),
         );
         toDoList = newArray;
-        displayElements(newArray);
+        displayElements(toDoList);
     }
 };
 
@@ -139,4 +139,16 @@ function displayElements(array) {
         sortButton.addEventListener("click", sort);
         searchSubmit.addEventListener("click", searchTodo);
     });
+
+    if (array === toDoList) {
+        localStorage.removeItem("toDoElements");
+        localStorage.setItem("toDoElements", JSON.stringify(array));
+    }
 }
+
+window.onload = () => {
+    toDoList = JSON.parse(localStorage.getItem("toDoElements")) || [];
+    if (!!toDoList) {
+        displayElements(toDoList);
+    }
+};
